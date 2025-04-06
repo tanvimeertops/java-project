@@ -36,36 +36,30 @@
 					<div class="col-md-7">
 						<!-- Billing Details -->
 						<div class="billing-details">
-							<div class="section-title">
-								<h3 class="title">
-								<%
-								if(request.getAttribute("msg")!=null){
-								out.println(request.getAttribute("msg"));
-								}
-								
-								%>
-								 </h3>
-							</div>
-							<form action="UserController" name="sign in" method="post">
+						<div class="section-title">
+							<h3 class="title">Forgot Password</h3>
+						</div>
+						<h3 style="color: red;">
+							<%=request.getAttribute("msg")%>
+						</h3>
+						<h3 style="color: red;">${sessionScope.msg}</h3>
+
+					</div>
+							<form action="UserController" name="Forgot Password" method="post">
 							
 							
 							<div class="form-group">
 								<input class="input" type="email" name="email" placeholder="Email">
 							</div>
 							
+								
 							
 							<div class="form-group">
-								<input class="input" type="password" name="pass" placeholder="Password">
-							</div>
-							
-							
-							
-							<div class="form-group">
-						<input type="submit"  name="action"  value="Sign In" class="primary-btn order-submit">
-						<a href="forgot_password.jsp"><input type="button" name="action" value="Forgot Password" class="primary-btn order-submit"/></a>
+						<input type="submit"  name="action"  value="Send Otp" class="primary-btn order-submit">
 					</div>
-					
 					</form>
+					
+					</div>
 							
 				</div>
 				

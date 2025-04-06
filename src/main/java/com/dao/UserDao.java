@@ -12,7 +12,7 @@ public class UserDao {
 	public static void signup(SignUp su) {
 		
 		Connection conn=ProjectUtil.createConnection();
-		String sql="insert into signup (fname,lname,email,mobile,pass,cpass) values(?,?,?,?,?,?)";
+		String sql="insert into signup (fname,lname,email,mobile,pass,cpass,usertype) values(?,?,?,?,?,?,?)";
 		
 		try {
 			PreparedStatement pst=conn.prepareStatement(sql);
@@ -22,6 +22,7 @@ public class UserDao {
 			pst.setString(4,su.getMobile() );
 			pst.setString(5,su.getPass() );
 			pst.setString(6,su.getCpass() );
+			pst.setString(7,su.getUsertype() );
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -72,6 +73,7 @@ public static SignUp signin(String email,String pass) {
 				su.setMobile(resultSet.getString("mobile"));
 				su.setPass(resultSet.getString("pass"));
 				su.setCpass(resultSet.getString("cpass"));
+				su.setUsertype(resultSet.getString("usertype"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -84,15 +86,37 @@ public static SignUp signin(String email,String pass) {
 public static void changePassword(String email, String new_password) {
 	Connection conn=ProjectUtil.createConnection();
 	
-	String sql="update signup set pass=? where email=?";
+	String sql="update signup set pass=?,cpass=? where email=?";
 	
 	try {
 		PreparedStatement pst=conn.prepareStatement(sql);
 		pst.setString(1, new_password);
-		pst.setString(2, email);
+		pst.setString(2, new_password);
+		pst.setString(3, email);
 		pst.executeUpdate();
 		
 	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	
+}
+
+public static void update_profile(SignUp su) {
+
+	try {
+		Connection conn=ProjectUtil.createConnection();
+		String sql="update signup set fname=?,lname=?,mobile=? where email=?";
+		PreparedStatement pst=conn.prepareStatement(sql);
+		pst.setString(1, su.getFname());
+		pst.setString(2, su.getLname());
+		pst.setString(3, su.getMobile());
+		pst.setString(4, su.getEmail());
+		pst.executeUpdate();
+		
+		
+	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}

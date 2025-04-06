@@ -46,43 +46,33 @@
 								%>
 							</h3>
 						</div>
-						<form action="UserController" name="sign up" method="post">
-							<div >
-								<input type="radio"  name="usertype" value="user">User 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="radio" name="usertype" value="seller"> Seller
-							</div>
-
+						<form action="UserController" name="update profile" method="post">
 							<div class="form-group">
 								<input class="input" type="text" name="fname"
-									placeholder="First Name">
+									placeholder="First Name" value="<%=su.getFname()%>">
 							</div>
 							<div class="form-group">
 								<input class="input" type="text" name="lname"
-									placeholder="Last Name">
+									placeholder="Last Name" value="<%=su.getLname()%>">
 							</div>
 							<div class="form-group">
-								<input class="input" type="email" name="email"
-									placeholder="Email">
+								<input class="input" type="email" name="email" readonly="readonly"
+									placeholder="Email" value="<%=su.getEmail()%>">
 							</div>
 
 							<div class="form-group">
 								<input class="input" type="tel" name="mobile"
-									placeholder="Mobile">
+									placeholder="Mobile" value="<%=su.getMobile()%>" >
 							</div>
 
-							<div class="form-group">
-								<input class="input" type="password" name="pass"
-									placeholder="Password">
-							</div>
+							<%-- <div class="form-group">
+							<textarea name="message" rows="4" cols="80" placeholder="<%=su.getadd%>"></textarea>
+							</div> --%>
+
+							
 
 							<div class="form-group">
-								<input class="input" type="password" name="cpass"
-									placeholder="Confirm Password">
-							</div>
-
-							<div class="form-group">
-								<input type="submit" name="action" value="Sign Up"
+								<input type="submit" name="action" value="Update Profile"
 									class="primary-btn order-submit">
 							</div>
 						</form>

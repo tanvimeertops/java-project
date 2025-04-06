@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="header.jsp"%>
+<%@include file="seller_header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +15,7 @@
 				<div class="col-md-12">
 					<h3 class="breadcrumb-header">Contact</h3>
 					<ul class="breadcrumb-tree">
-						<li><a href="index.jsp">Home</a></li>
+						<li><a href="seller_index.jsp">Home</a></li>
 						<li class="active">Contact</li>
 					</ul>
 				</div>
@@ -46,43 +46,37 @@
 								%>
 							</h3>
 						</div>
-						<form action="UserController" name="sign up" method="post">
-							<div >
-								<input type="radio"  name="usertype" value="user">User 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="radio" name="usertype" value="seller"> Seller
+						<form action="UserController" name="update profile" method="post">
+						<div class="form-group">
+								<input class="input" type="text" name="usertype"
+								 value="<%=su.getUsertype()%>" readonly="readonly">
 							</div>
-
 							<div class="form-group">
 								<input class="input" type="text" name="fname"
-									placeholder="First Name">
+									 value="<%=su.getFname()%>">
 							</div>
 							<div class="form-group">
 								<input class="input" type="text" name="lname"
-									placeholder="Last Name">
+								 value="<%=su.getLname()%>">
 							</div>
 							<div class="form-group">
-								<input class="input" type="email" name="email"
-									placeholder="Email">
+								<input class="input" type="email" name="email" readonly="readonly"
+								 value="<%=su.getEmail()%>">
 							</div>
 
 							<div class="form-group">
 								<input class="input" type="tel" name="mobile"
-									placeholder="Mobile">
+								 value="<%=su.getMobile()%>" >
 							</div>
 
-							<div class="form-group">
-								<input class="input" type="password" name="pass"
-									placeholder="Password">
-							</div>
+							<%-- <div class="form-group">
+							<textarea name="message" rows="4" cols="80" placeholder="<%=su.getadd%>"></textarea>
+							</div> --%>
+
+							
 
 							<div class="form-group">
-								<input class="input" type="password" name="cpass"
-									placeholder="Confirm Password">
-							</div>
-
-							<div class="form-group">
-								<input type="submit" name="action" value="Sign Up"
+								<input type="submit" name="action" value="Update Profile"
 									class="primary-btn order-submit">
 							</div>
 						</form>

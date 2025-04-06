@@ -3,7 +3,13 @@ package com.bean;
 public class SignUp {
 
 	int id;
-	String fname,lname,email,mobile,pass,cpass;
+	String fname,lname,email,mobile,pass,cpass,usertype;
+	public String getUsertype() {
+		return usertype;
+	}
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
+	}
 	public int getId() {
 		return id;
 	}
